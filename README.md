@@ -5,9 +5,9 @@ Go to the github repo [link]: https://github.com/cumbach/delimiters and copy the
 In your terminal, clone the repo then navigate to the root directory.
 
 ### NPM
-If you don't already have Webpack installed, install in the terminal by running: npm install web pack -g
+If you don't already have Webpack installed, install in the terminal by running: npm install web pack -g.
 Then in the terminal, install node modules by running: npm install.
 
 ## Running and Opening
-In the terminal, run: webpack
-Open index.html in the browser by running: open index.html
+In the terminal, run: webpack.
+Open index.html in the browser by running: open index.html.
