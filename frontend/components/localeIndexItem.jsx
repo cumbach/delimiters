@@ -4,19 +4,18 @@ var LocaleActions = require('../actions/localeActions');
 var LocaleStore = require('../stores/localeStore');
 
 var LocaleIndexItem = React.createClass({
-  delimiter: function() {
-    // console.log(this.props.delimiters[this.props.showDelimiter]);
-    // if (this.props.showDelimiter) {
-      // console.log(this.props.delimiters.showDelimiter);
-      return(<div className="delimiter">{this.props.delimiters[this.props.showDelimiter]}</div>);
-    // }
+  delimiters: function() {
+      var result = [];
+      for (var val in this.props.selectedDelimiters) {
+        result.push(<div className="delimiter">{this.props.delimiters[this.props.selectedDelimiters[val]]}</div>);
+      }
+      return result;
   },
   render: function() {
-    // var category = this.props.ingredient.category;
     return (
       <div className='row'>
-        <div className="ingredient-name">{this.props.language}</div>
-        {this.delimiter()}
+        <div className="language">{this.props.language}</div>
+        {this.delimiters()}
       </div>
     );
   }
