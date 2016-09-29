@@ -74,7 +74,9 @@ var App = React.createClass({
         <h1>Locale Properties:</h1>
         <div className='row-headers'>
           <h4>Locales</h4>
-          {this.selectTag()}
+          <div className='selector'>
+            {this.selectTag()}
+          </div>
         </div>
         <div className='list'>{this.localeMap()}</div>
       </div>
