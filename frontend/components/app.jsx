@@ -1,13 +1,5 @@
 var React = require('react');
-// var IngredientsIndex = require('./ingredientsIndex');
-// var FridgeIndex = require('./fridgeIndex');
-// var RecipesIndex = require('./recipesIndex');
-// var PrimaryIndex = require('./primaryIndex');
-// var PrimaryStore = require('../stores/primaryStore');
-// var FridgeStore = require('../stores/fridgeStore');
-// var RecipeSearch = require('./recipeSearch');
 var LocaleStore = require('../stores/localeStore');
-//
 var ApiUtil = require('../util/apiUtil');
 var LocaleActions = require('../actions/localeActions');
 var LocaleIndexItem = require('./localeIndexItem');
