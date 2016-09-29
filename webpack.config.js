@@ -1,5 +1,4 @@
 const path = require("path");
-// const fs = require('fs');
 
 module.exports = {
   context: __dirname,
@@ -22,9 +21,9 @@ module.exports = {
   },
   devtool: 'source-maps',
   resolve: {
-    extensions: ["", ".js", ".jsx" ]
+    extensions: ["", ".js", ".jsx" ],
   },
-  // node: {
-  //   fs: "empty"
-  // }
+  node: {
+    fs: "empty"
+  }
 };

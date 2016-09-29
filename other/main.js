@@ -2,25 +2,30 @@ var fs = require( 'fs' );
 var path = require( 'path' );
 var process = require( "process" );
 
-var moveFrom = "./locales";
-var moveTo = "./locales"
+var fromFile = "./locales";
 
 // Loop through all the files in the temp directory
-fs.readdir( moveFrom, function( err, files ) {
+fs.readdir( fromFile, function( err, files ) {
         if( err ) {
             console.error( "Could not list the directory.", err );
             process.exit( 1 );
         }
 
+        var lang;
+        var result = [];
+
         files.forEach( function( file, index ) {
 
                 // Make one pass and make the file complete
-                var fromPath = path.join( moveFrom, file );
-                var toPath = path.join( moveTo, file );
+                var fromPath = path.join( fromFile, file );
 
                 var obj = JSON.parse(fs.readFileSync(fromPath + '/delimiters.json', 'utf8'));
                 var locale = file.toString();
 
-                console.log(obj['main'][locale]);
+                lang = obj['main'][locale]['identity']['language'];
+                if (result.indexOf(lang) === -1) {
+                  result.push(lang);
+                }
         } );
+        return result;
 } );

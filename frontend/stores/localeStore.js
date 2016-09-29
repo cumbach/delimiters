@@ -3,16 +3,17 @@ var Dispatcher = require('../dispatcher/dispatcher.js');
 var LocaleConstants = require('../constants/localeConstants.js');
 var LocaleStore = new Store(Dispatcher);
 
-var _localeItems = [];
+var _localeItems = {};
 
-var resetLocaleItems = function (localeItems) {
+var setLocaleItems = function (localeItems) {
   // _localeItems = {};
-  var _localeItems = [];
-  for (var key in localeItems) {
-    _localeItems.push(localeItems[key]);
+  // _localeItems = {};
+  for (var main in localeItems) {
+    // console.log(localeItems[main])
+    for (var lang in localeItems[main]) {
+      _localeItems[lang] = localeItems[main][lang];
+    }
   }
-  console.log(_localeItems);
-  // return localeItems;
 };
 // var removeIngredient = function(ingredient) {
 //   delete _ingredients[ingredient.id];
@@ -27,7 +28,7 @@ LocaleStore.all = function () {
 LocaleStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case LocaleConstants.LOCALES_RECEIVED:
-      resetLocaleItems(payload.localeItems);
+      setLocaleItems(payload.localeItems);
       LocaleStore.__emitChange();
       break;
   }

@@ -2,45 +2,30 @@
 // var FridgeActions = require('../actions/fridgeActions');
 // var PrimaryActions = require('../actions/primaryActions');
 var LocaleActions = require('../actions/localeActions');
-
+var langArray = require('../constants/langArray');
 // var RecipeActions;
 // var glob = require('glob-fs')({ gitignore: true });
 // var files = glob.readdirSync('**/*.js');
-var fs = require('fs');
+// var fs = require('fs');
+// console.log(fs);
 // var APP_ID = 'f4ac9032';
 // var APP_KEY = 'ec28d82137e2708128a2f7f69400989f';
 // import * as fs from 'fs';
-var path = require( 'path' );
-var process = require( "process" );
+// var process = require( "process" );
+// var path = require( 'path' );
 
 module.exports = {
   fetchAllLocaleItems: function() {
-
-    var moveFrom = "../locales";
-    var moveTo = "../locales"
-    var locales = [];
-    console.log(fs);
-
-    // Loop through all the files in the temp directory
-    fs.readdir( moveFrom, function( err, files ) {
-            if( err ) {
-                console.error( "Could not list the directory.", err );
-                process.exit( 1 );
-            }
-
-            files.forEach( function( file, index ) {
-
-                    // Make one pass and make the file complete
-                    var fromPath = path.join( moveFrom, file );
-                    var toPath = path.join( moveTo, file );
-
-                    var obj = JSON.parse(fs.readFileSync(fromPath + '/delimiters.json', 'utf8'));
-                    var locale = file.toString();
-
-                    console.log(obj['main'][locale]);
-            } );
-    } );
-    LocaleActions.receiveAllLocaleItems({"en":"asdf"})
+    // langArray.forEach(function(){
+    for (var i = 0; i < langArray.length; i++) {
+      $.ajax({
+        url: 'https://rawgit.com/unicode-cldr/cldr-misc-full/master/main/' + langArray[i] + '/delimiters.json',
+        success: function (locales) {
+          LocaleActions.receiveAllLocaleItems(locales)
+        }
+      });
+    }
+    // });
   }
   // fetchAllIngredients: function() {
   //   $.ajax({
