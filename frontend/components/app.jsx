@@ -75,7 +75,7 @@ var App = React.createClass({
   },
   render: function() {
     return (
-      <div id="wrapper" className="foodiefridge-app">
+      <div id="wrapper">
         <h1>Locale Properties:</h1>
         <div className='row-headers'>
           <h4>Locales</h4>
